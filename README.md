@@ -16,7 +16,7 @@ This uses all default values:
 2. **Custom Amount**
 
 ```
-https://pay-frame.vercel.app/?amount=5.5
+https://pay-frame.vercel.app/?amount=5
 ```
 
 Sends 5.5 USDC to the default recipient

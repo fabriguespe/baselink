@@ -34,7 +34,13 @@ export async function GET(req: NextRequest) {
       console.log("userInfo", userInfo);
       recipientName = userInfo?.preferredName || recipientAddress;
     }
-    console.log("recipientName", recipientName);
+    const toComponent =
+      recipientName !== "Friend"
+        ? `To: ${recipientName}`
+        : "To: " +
+          recipientAddress?.slice(0, 4) +
+          "..." +
+          recipientAddress?.slice(-4);
 
     if (
       !networkName ||
@@ -141,9 +147,9 @@ export async function GET(req: NextRequest) {
                 }}
               >
                 {amount} {tokenName}
-                {recipientName ? ` to ${recipientName}` : ""}
               </div>
             </div>
+            <div style={{ fontSize: "30px" }}>{toComponent}</div>
           </div>
         </div>
       ),
