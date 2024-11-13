@@ -1,0 +1,33 @@
+export default function Home() {
+  const localurl = "https://480e-96-30-76-11.ngrok-free.app";
+  const url = process.env.NEXT_PUBLIC_URL || localurl;
+  const recipientAddress = "0xc93B8e62b3c60f6D222491201B92909089A9faD3";
+  const USDC_CONTRACT_ADDRESS = "0x833589fcd6edb6e08f4c7c32d4f71b54bda02913";
+  const chainId = 8453;
+  const amount = 1_000_000;
+
+  const ethereumUrl = `ethereum:${USDC_CONTRACT_ADDRESS}@${chainId}/transfer?address=${recipientAddress}&uint256=${amount}`;
+
+  const redirectUrl = `${url}/redirect?target=${encodeURIComponent(
+    ethereumUrl
+  )}`;
+
+  return (
+    <html>
+      <head>
+        <meta charSet="utf-8" />
+        <meta property="og:title" content="Ethereum Payment" />
+        <meta property="fc:frame" content="vNext" />
+        <meta property="of:version" content="vNext" />
+        <meta property="of:accepts:xmtp" content="vNext" />
+        <meta property="of:image" content={`${url}/social.png`} />
+        <meta property="og:image" content={`${url}/social.png`} />
+        <meta property="fc:frame:image" content={`${url}/social.png`} />
+        <meta property="fc:frame:button:1" content={`Make Payment`} />
+        <meta property="fc:frame:button:1:action" content="link" />
+        <meta property="fc:frame:button:1:target" content={redirectUrl} />
+      </head>
+      <body>{/* Empty body as per Frames spec */}</body>
+    </html>
+  );
+}
