@@ -9,9 +9,11 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "ethers": "^6.13.4",
     "next": "15.0.3",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "viem": "^2.21.45"
   },
   "devDependencies": {
     "@types/node": "^20",

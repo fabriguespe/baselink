@@ -1,13 +1,20 @@
+import { parseUnits } from "viem";
+
 export default function Home() {
-  const localurl = "https://480e-96-30-76-11.ngrok-free.app";
+  const localurl = "https://10bd-96-30-76-11.ngrok-free.app";
   const url = process.env.NEXT_PUBLIC_URL || localurl;
-  const recipientAddress = "0xc93B8e62b3c60f6D222491201B92909089A9faD3";
-  const USDC_CONTRACT_ADDRESS = "0x833589fcd6edb6e08f4c7c32d4f71b54bda02913";
-  const chainId = 8453;
-  const amount = 1_000_000;
 
-  const ethereumUrl = `ethereum:${USDC_CONTRACT_ADDRESS}@${chainId}/transfer?address=${recipientAddress}&uint256=${amount}`;
+  //Params
+  const params = {
+    recipientAddress: "0xc93B8e62b3c60f6D222491201B92909089A9faD3",
+    tokenAddress: "0x833589fcd6edb6e08f4c7c32d4f71b54bda02913", //usdc
+    chainId: 8453,
+    amount: 1,
+  };
 
+  const amountUint256 = parseUnits(params.amount.toString(), 6);
+
+  const ethereumUrl = `ethereum:${params.tokenAddress}@${params.chainId}/transfer?address=${params.recipientAddress}&uint256=${amountUint256}`;
   const redirectUrl = `${url}/redirect?target=${encodeURIComponent(
     ethereumUrl
   )}`;
