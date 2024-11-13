@@ -1,15 +1,27 @@
 import { parseUnits } from "viem";
 
-export default function Home() {
-  const localurl = "https://10bd-96-30-76-11.ngrok-free.app";
+export default async function Home({
+  searchParams,
+}: {
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
+}) {
+  const resolvedSearchParams = await searchParams; // Await the promise
+
+  const localurl = "http://localhost:3000"; //"https://10bd-96-30-76-11.ngrok-free.app";
   const url = process.env.NEXT_PUBLIC_URL || localurl;
 
-  //Params
   const params = {
-    recipientAddress: "0xc93B8e62b3c60f6D222491201B92909089A9faD3",
-    tokenAddress: "0x833589fcd6edb6e08f4c7c32d4f71b54bda02913", //usdc
-    chainId: 8453,
-    amount: 1,
+    recipientAddress:
+      (resolvedSearchParams?.recipientAddress as string) ||
+      "0x277C0dd35520dB4aaDDB45d4690aB79353D3368b",
+    tokenAddress:
+      (resolvedSearchParams?.tokenAddress as string) ||
+      "0x833589fcd6edb6e08f4c7c32d4f71b54bda02913", //usdc
+    chainId: parseInt(resolvedSearchParams?.chainId as string) || 8453,
+    amount: parseFloat(resolvedSearchParams?.amount as string) || 1,
+    baseLogo: "https://avatars.githubusercontent.com/u/108554348?s=280&v=4",
+    networkName: "base",
+    tokenName: "usdc",
   };
 
   const amountUint256 = parseUnits(params.amount.toString(), 6);
@@ -19,6 +31,14 @@ export default function Home() {
     ethereumUrl
   )}`;
 
+  const image = `${url}/api/image?s=1&networkLogo=${params.baseLogo}&amount=${params.amount}&networkName=${params.networkName}&tokenName=${params.tokenName}&recipientAddress=${params.recipientAddress}`;
+  console.log(image);
+
+  /*const imageOptions = {
+    aspectRatio: "1.91:1",
+    width: 955,
+    height: 500,
+  };*/
   return (
     <html>
       <head>
@@ -27,10 +47,11 @@ export default function Home() {
         <meta property="fc:frame" content="vNext" />
         <meta property="of:version" content="vNext" />
         <meta property="of:accepts:xmtp" content="vNext" />
-        <meta property="of:image" content={`${url}/social.png`} />
-        <meta property="og:image" content={`${url}/social.png`} />
-        <meta property="fc:frame:image" content={`${url}/social.png`} />
-        <meta property="fc:frame:button:1" content={`Make Payment`} />
+        <meta property="of:image" content={image} />
+        <meta property="og:image" content={image} />
+        <meta property="fc:frame:image" content={image} />
+        <meta property="fc:frame:ratio" content="1.91:1" />
+        <meta property="fc:frame:button:1" content={`Pay $${params.amount}`} />
         <meta property="fc:frame:button:1:action" content="link" />
         <meta property="fc:frame:button:1:target" content={redirectUrl} />
       </head>
