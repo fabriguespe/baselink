@@ -55,5 +55,3 @@ This example:
 - Sets amount to 2 USDC
 
 You can mix and match any of these parameters as needed. Any parameter not specified will fall back to the default values in the code.
-
-[Reference: pay-frame.vercel.app](https://pay-frame.vercel.app/)
