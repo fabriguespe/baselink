@@ -2,7 +2,6 @@ import { ImageResponse } from "next/og";
 import { NextRequest } from "next/server";
 import fs from "fs";
 import { join } from "path";
-import { getUserInfo } from "@/app/api/image/resolver";
 
 export interface Network {
   networkId: string;
@@ -26,21 +25,12 @@ export async function GET(req: NextRequest) {
     const networkName = req.nextUrl.searchParams.get("networkName");
     const tokenName = req.nextUrl.searchParams.get("tokenName");
     const recipientAddress = req.nextUrl.searchParams.get("recipientAddress");
-    let recipientName = "";
 
-    if (recipientAddress) {
-      console.log("recipientAddress", recipientAddress);
-      const userInfo = await getUserInfo(recipientAddress);
-      console.log("userInfo", userInfo);
-      recipientName = userInfo?.preferredName || recipientAddress;
-    }
     const toComponent =
-      recipientName !== "Friend"
-        ? `To: ${recipientName}`
-        : "To: " +
-          recipientAddress?.slice(0, 4) +
-          "..." +
-          recipientAddress?.slice(-4);
+      "To: " +
+      recipientAddress?.slice(0, 4) +
+      "..." +
+      recipientAddress?.slice(-4);
 
     if (
       !networkName ||
