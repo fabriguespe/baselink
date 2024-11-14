@@ -53,7 +53,7 @@ export default async function Home({
         <meta property="fc:frame:ratio" content="1.91:1" />
         <meta property="fc:frame:button:1" content={`Pay $${params.amount}`} />
         <meta property="fc:frame:button:1:action" content="link" />
-        <meta property="fc:frame:button:1:target" content={redirectUrl} />
+        <meta property="fc:frame:button:1:target" content={ethereumUrl} />
       </head>
       <body>{/* Empty body as per Frames spec */}</body>
     </html>
