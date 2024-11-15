@@ -6,10 +6,7 @@ export default async function Home({
   searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
 }) {
   const resolvedSearchParams = await searchParams; // Await the promise
-
-  const localurl = "http://localhost:3000"; //"https://10bd-96-30-76-11.ngrok-free.app";
-  const url = process.env.NEXT_PUBLIC_URL || localurl;
-
+  //tes sd
   const params = {
     recipientAddress:
       (resolvedSearchParams?.recipientAddress as string) ||
@@ -28,8 +25,8 @@ export default async function Home({
 
   const ethereumUrl = `ethereum:${params.tokenAddress}@${params.chainId}/transfer?address=${params.recipientAddress}&uint256=${amountUint256}`;
 
-  const image = `${url}/api/image?s=1&networkLogo=${params.baseLogo}&amount=${params.amount}&networkName=${params.networkName}&tokenName=${params.tokenName}&recipientAddress=${params.recipientAddress}`;
-
+  const image = `${process.env.NEXT_PUBLIC_URL}/api/image?s=1&networkLogo=${params.baseLogo}&amount=${params.amount}&networkName=${params.networkName}&tokenName=${params.tokenName}&recipientAddress=${params.recipientAddress}`;
+  console.log(image);
   return (
     <html>
       <head>
