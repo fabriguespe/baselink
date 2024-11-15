@@ -7,7 +7,7 @@ export default async function Home({
 }) {
   const resolvedSearchParams = await searchParams; // Await the promise
 
-  const localurl = "https://7769-96-30-76-11.ngrok-free.app"; //"http://localhost:3000"; //"https://10bd-96-30-76-11.ngrok-free.app";
+  const localurl = "http://localhost:3000"; //"https://10bd-96-30-76-11.ngrok-free.app";
   const url = process.env.NEXT_PUBLIC_URL || localurl;
 
   const params = {
@@ -27,9 +27,9 @@ export default async function Home({
   const amountUint256 = parseUnits(params.amount.toString(), 6);
 
   const ethereumUrl = `ethereum:${params.tokenAddress}@${params.chainId}/transfer?address=${params.recipientAddress}&uint256=${amountUint256}`;
-  const redirectUrl = `${url}/redirect?target=${encodeURIComponent(
-    ethereumUrl
-  )}`;
+  // const redirectUrl = `${url}/redirect?target=${encodeURIComponent(
+  //   ethereumUrl
+  // )}`;
   //const encodedEthereumUrl = encodeURIComponent(ethereumUrl);
 
   const image = `${url}/api/image?s=1&networkLogo=${params.baseLogo}&amount=${params.amount}&networkName=${params.networkName}&tokenName=${params.tokenName}&recipientAddress=${params.recipientAddress}`;
@@ -50,11 +50,7 @@ export default async function Home({
 
         <meta property="fc:frame:button:1" content={`Pay $${params.amount}`} />
         <meta property="fc:frame:button:1:action" content="link" />
-        <meta property="fc:frame:button:1:target" content={redirectUrl} />
-
-        <meta property="fc:frame:button:2" content={`Pay $${params.amount}`} />
-        <meta property="fc:frame:button:2:action" content="link" />
-        <meta property="fc:frame:button:2:target" content={ethereumUrl} />
+        <meta property="fc:frame:button:1:target" content={ethereumUrl} />
       </head>
       <body>{/* Empty body as per Frames spec */}</body>
     </html>
