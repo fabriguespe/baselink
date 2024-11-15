@@ -87,17 +87,6 @@ This example:
 
 You can mix and match any of these parameters as needed. Any parameter not specified will fall back to the default values in the code.
 
-## Mints
-
-### Mint Page
-
-The `mint` page allows users to mint NFTs by specifying a collection ID and token ID through URL parameters. The page generates a mint link and an image URL for the NFT.
-
-#### URL Parameters
-
-- `collectionId`: The ID of the NFT collection. If not provided, defaults to `0x73a333cb82862d4f66f0154229755b184fb4f5b0`.
-- `tokenId`: The ID of the token to be minted. If not provided, defaults to `1`.
-
 ### Example URLs
 
 1. **Default Parameters**
