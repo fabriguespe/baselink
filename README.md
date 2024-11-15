@@ -1,9 +1,43 @@
-I'll show you examples of how to use the payment frame with different URL parameters. Here are some practical examples using the pay-frame.vercel.app service:
+# Tx Payments
+
+This Frame button uses the standard for EVM transactons [EIP681](https://eips.ethereum.org/EIPS/eip-681)
+
+## URL Parameters and Ethereum Scheme
+
+The frame uses the following default parameters if not specified:
+
+```typescript
+const defaultParams = {
+  recipientAddress: "0x277C0dd35520dB4aaDDB45d4690aB79353D3368b",
+  tokenAddress: "0x833589fcd6edb6e08f4c7c32d4f71b54bda02913", // USDC on Base
+  chainId: 8453, // Base
+  amount: 1, // 1 USDC
+  baseLogo: "https://avatars.githubusercontent.com/u/108554348?s=280&v=4",
+  networkName: "base",
+  tokenName: "usdc",
+};
+```
+
+The frame generates an Ethereum URL scheme following EIP-681 format:
+
+```
+ethereum:{tokenAddress}@{chainId}/transfer?address={recipientAddress}&uint256={amountInWei}
+```
+
+For example, a 1 USDC transfer would generate:
+
+```
+ethereum:0x833589fcd6edb6e08f4c7c32d4f71b54bda02913@8453/transfer?address=0x277C0dd35520dB4aaDDB45d4690aB79353D3368b&uint256=1000000
+```
+
+Note: USDC amounts are converted to wei (6 decimal places) before being included in the URL.
+
+## Examples
 
 1. **Basic USDC Payment (Using Defaults)**
 
 ```
-https://pay-frame.vercel.app/
+https://txpay.vercel.app/
 ```
 
 This uses all default values:
@@ -16,7 +50,7 @@ This uses all default values:
 2. **Custom Amount**
 
 ```
-https://pay-frame.vercel.app/?amount=5
+https://txpay.vercel.app/?amount=5
 ```
 
 Sends 5.5 USDC to the default recipient
@@ -24,7 +58,7 @@ Sends 5.5 USDC to the default recipient
 3. **Custom Recipient**
 
 ```
-https://pay-frame.vercel.app/?recipientAddress=0x742d35Cc6634C0532925a3b844Bc454e4438f44e
+https://txpay.vercel.app/?recipientAddress=0x742d35Cc6634C0532925a3b844Bc454e4438f44e
 ```
 
 Sends to a different recipient address
@@ -32,7 +66,7 @@ Sends to a different recipient address
 4. **Full Custom Parameters**
 
 ```
-https://pay-frame.vercel.app/?recipientAddress=0x742d35Cc6634C0532925a3b844Bc454e4438f44e&tokenAddress=0x833589fcd6edb6e08f4c7c32d4f71b54bda02913&chainId=8453&amount=10
+https://txpay.vercel.app/?recipientAddress=0x742d35Cc6634C0532925a3b844Bc454e4438f44e&tokenAddress=0x833589fcd6edb6e08f4c7c32d4f71b54bda02913&chainId=8453&amount=10
 ```
 
 This example:
@@ -45,7 +79,7 @@ This example:
 5. **Different Chain and Token**
 
 ```
-https://pay-frame.vercel.app/?chainId=1&tokenAddress=0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48&amount=2
+https://txpay.vercel.app/?chainId=1&tokenAddress=0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48&amount=2
 ```
 
 This example:

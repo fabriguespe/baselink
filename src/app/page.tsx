@@ -27,13 +27,8 @@ export default async function Home({
   const amountUint256 = parseUnits(params.amount.toString(), 6);
 
   const ethereumUrl = `ethereum:${params.tokenAddress}@${params.chainId}/transfer?address=${params.recipientAddress}&uint256=${amountUint256}`;
-  // const redirectUrl = `${url}/redirect?target=${encodeURIComponent(
-  //   ethereumUrl
-  // )}`;
-  //const encodedEthereumUrl = encodeURIComponent(ethereumUrl);
 
   const image = `${url}/api/image?s=1&networkLogo=${params.baseLogo}&amount=${params.amount}&networkName=${params.networkName}&tokenName=${params.tokenName}&recipientAddress=${params.recipientAddress}`;
-  console.log(image);
 
   return (
     <html>
