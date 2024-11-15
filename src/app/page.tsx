@@ -1,5 +1,5 @@
 import { parseUnits } from "viem";
-
+import UrlGenerator from "@/components/UrlGenerator";
 export default async function Home({
   searchParams,
 }: {
@@ -47,7 +47,9 @@ export default async function Home({
         <meta property="fc:frame:button:1:action" content="link" />
         <meta property="fc:frame:button:1:target" content={ethereumUrl} />
       </head>
-      <body>{/* Empty body as per Frames spec */}</body>
+      <body>
+        <UrlGenerator />
+      </body>
     </html>
   );
 }
