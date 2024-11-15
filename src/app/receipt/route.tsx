@@ -5,20 +5,19 @@ export async function GET(request: Request) {
 
   const url = `${process.env.NEXT_PUBLIC_URL}`;
 
-  const txLink = searchParams.get("txLink") as string;
-  const networkLogo = searchParams.get("networkLogo") as string;
-  const amount = searchParams.get("amount") as string;
-  const networkName = searchParams.get("networkName") as string;
-  const tokenName = searchParams.get("tokenName") as string;
+  const txLink = searchParams.get("txLink");
+  const networkLogo = searchParams.get("networkLogo");
+  const amount = searchParams.get("amount");
+  const networkName = searchParams.get("networkName");
+  const tokenName = searchParams.get("tokenName");
+  const image = `${url}/api/receipt?networkLogo=${networkLogo}&amount=${amount}&networkName=${networkName}&tokenName=${tokenName}`;
 
-  if (!txLink || !networkLogo || !amount || !networkName || !tokenName) {
+  if (!txLink) {
     return NextResponse.json(
       { error: "Missing required parameters" },
       { status: 400 }
     );
   }
-
-  const image = `${url}/api/image?s=1&networkLogo=${networkLogo}&amount=${amount}&networkName=${networkName}&tokenName=${tokenName}`;
 
   // Convert JSX to HTML string
   const html = `

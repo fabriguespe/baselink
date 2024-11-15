@@ -86,3 +86,25 @@ This example:
 - Sets amount to 2 USDC
 
 You can mix and match any of these parameters as needed. Any parameter not specified will fall back to the default values in the code.
+
+# Receipts
+
+## Usage
+
+Once the app is running, you can construct an URL with the following format:
+
+```
+http://localhost:3001/receipt?txLink={txLink}&networkLogo={networkLogo}&amount={amount}&networkName={networkName}&tokenName={tokenName}
+```
+
+- `txLink`: Direct link to view the transaction.
+- `networkLogo`: Image URL of the network's logo.
+- `amount`: Transaction amount.
+- `networkName`: Name of the blockchain network.
+- `tokenName`: Name of the token involved.
+
+exampel url:
+
+```
+https://txpay.vercel.app/receipt?txLink=https://sepolia.basescan.org/tx/0x2ec524f740c5831b16ca84053f9b6ae3e3923d3399d527113982e884a75e6bfa&networkLogo=https://avatars.githubusercontent.com/u/108554348?s=280&v=4&networkName=Base-Sepolia&tokenName=bsETH&amount=0.01
+```
