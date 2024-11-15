@@ -12,13 +12,10 @@ export interface Network {
   recipientAddress: string;
 }
 
-const interFontPath = join(process.cwd(), "./src/app/fonts/GeistVF.woff");
+const interFontPath = join(process.cwd(), "Inter-Regular.ttf");
 const interFontData = fs.readFileSync(interFontPath);
 
-const interSemiboldFontPath = join(
-  process.cwd(),
-  "./src/app/fonts/GeistMonoVF.woff"
-);
+const interSemiboldFontPath = join(process.cwd(), "Inter-SemiBold.ttf");
 const interSemiboldFontData = fs.readFileSync(interSemiboldFontPath);
 
 export async function GET(req: NextRequest) {
