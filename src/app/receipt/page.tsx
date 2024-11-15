@@ -29,7 +29,7 @@ export default async function Home({
         <meta property="fc:frame:image" content={image} />
         <meta property="fc:frame:ratio" content="1.91:1" />
 
-        <meta property="fc:frame:button:1" content={`Pay $${amount}`} />
+        <meta property="fc:frame:button:1" content={`Transaction Receipt`} />
         <meta property="fc:frame:button:1:action" content="link" />
         <meta property="fc:frame:button:1:target" content={txLink} />
       </head>

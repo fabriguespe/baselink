@@ -105,6 +105,13 @@ export default function UrlGenerator() {
           )}
         </div>
         <div className="powered-by">
+          Or{" "}
+          <a href="/receipt" target="_blank" rel="noopener noreferrer">
+            Generate a Frame Receipt
+          </a>{" "}
+          for your transaction
+        </div>
+        <div className="powered-by">
           Powered by{" "}
           <a
             href="https://messagekit.ephemerahq.com/"
