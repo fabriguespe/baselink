@@ -12,9 +12,6 @@ const defaultParams = {
   tokenAddress: "0x833589fcd6edb6e08f4c7c32d4f71b54bda02913", // USDC on Base
   chainId: 8453, // Base
   amount: 1, // 1 USDC
-  baseLogo: "https://avatars.githubusercontent.com/u/108554348?s=280&v=4",
-  networkName: "base",
-  tokenName: "usdc",
 };
 ```
 
