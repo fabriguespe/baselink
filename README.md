@@ -1,8 +1,8 @@
-# Tx Payments
+# EVM TX Frame
 
 This Frame button uses the standard for EVM transactons [EIP681](https://eips.ethereum.org/EIPS/eip-681)
 
-## URL Parameters and Ethereum Scheme
+## Payments
 
 The frame uses the following default parameters if not specified:
 
@@ -29,7 +29,7 @@ ethereum:0x833589fcd6edb6e08f4c7c32d4f71b54bda02913@8453/transfer?address=0x277C
 
 Note: USDC amounts are converted to wei (6 decimal places) before being included in the URL.
 
-## Examples
+### Examples
 
 1. **Basic USDC Payment (Using Defaults)**
 
@@ -87,14 +87,33 @@ This example:
 
 You can mix and match any of these parameters as needed. Any parameter not specified will fall back to the default values in the code.
 
-# Receipts
+## Mints
 
-## Usage
+### Mint Page
+
+The `mint` page allows users to mint NFTs by specifying a collection ID and token ID through URL parameters. The page generates a mint link and an image URL for the NFT.
+
+#### URL Parameters
+
+- `collectionId`: The ID of the NFT collection. If not provided, defaults to `0x73a333cb82862d4f66f0154229755b184fb4f5b0`.
+- `tokenId`: The ID of the token to be minted. If not provided, defaults to `1`.
+
+### Example URLs
+
+1. **Default Parameters**
+
+```
+https://txpay.vercel.app/mint?collectionId=0x73a333cb82862d4f66f0154229755b184fb4f5b0&tokenId=1
+```
+
+## Receipts
 
 Once the app is running, you can construct an URL with the following format:
 
 ```
+
 http://localhost:3001/receipt?txLink={txLink}&networkLogo={networkLogo}&amount={amount}&networkName={networkName}&tokenName={tokenName}
+
 ```
 
 - `txLink`: Direct link to view the transaction.
@@ -106,5 +125,11 @@ http://localhost:3001/receipt?txLink={txLink}&networkLogo={networkLogo}&amount={
 Example url:
 
 ```
+
 https://txpay.vercel.app/receipt?txLink=https://sepolia.basescan.org/tx/0x2ec524f740c5831b16ca84053f9b6ae3e3923d3399d527113982e884a75e6bfa&networkLogo=https://avatars.githubusercontent.com/u/108554348?s=280&v=4&networkName=Base&tokenName=usdc&amount=1
+
+```
+
+```
+
 ```
