@@ -106,7 +106,7 @@ export default function UrlGenerator() {
         </div>
         <div className="powered-by">
           Or{" "}
-          <a href="/receipt" target="_blank" rel="noopener noreferrer">
+          <a href="/receipt" rel="noopener noreferrer">
             Generate a Frame Receipt
           </a>{" "}
           for your transaction

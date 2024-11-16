@@ -15,7 +15,6 @@ export default async function Home({
   //ethereum:0x73a333cb82862d4f66f0154229755b184fb4f5b0/mint?uint256=1
 
   const image = `${url}/api/mint?collectionId=${collectionId}&tokenId=${tokenId}`;
-  console.log({ image });
   return (
     <html>
       <head>
